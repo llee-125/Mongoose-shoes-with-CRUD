@@ -7,12 +7,12 @@ module.exports = {
       .then((result) => res.send(result))
       .catch((err) => res.send(err)),
 
-  // if req.query is passed it will find the specific shoe
+  // if req.query is passed it will find the specific shoe--url + "?id=(id#)"
   // otherwise it will return all shoes
   getShoe: (req, res) => {
     !req.query.id
       ? Shoe.find({})
-          // .populate("authorId", "email password")
+          .populate("authorId", "email")
           .then((allShoes) => res.send(allShoes))
           .catch((err) => res.send(err))
       : Shoe.findById(req.query.id)
@@ -65,11 +65,8 @@ module.exports = {
     try {
       const foundShoe = await Shoe.findById(req.body.shoeId);
       const indexToDelete = foundShoe.likes.indexOf(req.body.likerId);
-
       foundShoe.likes.splice(indexToDelete, 1);
-
       await foundShoe.save();
-
       res.send(foundShoe);
     } catch (error) {
       res.send(error);

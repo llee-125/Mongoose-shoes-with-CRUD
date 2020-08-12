@@ -11,7 +11,7 @@ module.exports = {
           .catch((err) => res.send(err));
   },
 
-  newUser: (req, res) => {
+  newUser: async (req, res) => {
     User.create({
       email: req.body.email,
       password: req.body.password,
@@ -20,7 +20,7 @@ module.exports = {
       .catch((err) => res.send(err));
   },
 
-  deleteUser: (req, res) => {
+  deleteUser: async (req, res) => {
     User.findById(req.query.id)
       .then((foundUser) => {
         foundUser.remove();

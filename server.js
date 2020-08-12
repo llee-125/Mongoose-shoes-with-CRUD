@@ -15,7 +15,6 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/shoes_db", {
 
 const shoeRoutes = require("./routes/shoe-routes");
 const userRoutes = require("./routes/user-routes");
-
 app.use(shoeRoutes, userRoutes);
 
 app.listen(PORT, () => console.log(`listening at http://localhost:${PORT}`));
