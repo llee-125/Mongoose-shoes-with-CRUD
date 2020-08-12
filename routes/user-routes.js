@@ -11,10 +11,7 @@ router.post("/user", newUser);
 
 router.delete("/user", deleteUser);
 
-// module.exports = router;
-
-// More concise coding
-// const router = require("express").Router();
+// MORE CONSISE CODE
 // const userController = require("../controllers/user-controller");
 
 // router
